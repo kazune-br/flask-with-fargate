@@ -7,12 +7,21 @@ phases:
   pre_build:
     commands:
       - pip install -r requirements.txt
+      - docker images -a
   build:
     commands:
       # - echo "codebuild local test" > $CODEBUILD_SRC_DIR/output.txt
-      - echo Run unit test
-      - python3 test.py
-artifacts:
-  base-directory: $CODEBUILD_SRC_DIR
-  files:
-    - output.txt
+      # - echo Run unit test
+      # - python3 test.py
+      - docker build -t flask-with-fargate:latest .
+#      - docker images -a
+#      - docker ps
+#      - docker ps -a
+#      - ls
+      - docker run -d -p 80:5000 falsk-with-fargate:latest -n flask-app
+
+    # - docker-compose run web test.py
+#artifacts:
+#  base-directory: $CODEBUILD_SRC_DIR
+#  files:
+#    - output.txt

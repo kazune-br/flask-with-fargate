@@ -1,7 +1,7 @@
 ### Docker Command
 ```
 $ docker build -t flask-with-fargate:latest .
-$ docker run -d -p 80:5000 falsk-with-fargate -n flask-app
+$ docker run -d -p 80:5000 falsk-with-fargate:latest -n flask-app
 $ docker rm -f flask-app
 $ docker-compose up --build -d
 $ docker-compose down
